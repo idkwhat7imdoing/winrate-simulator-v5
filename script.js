@@ -1,81 +1,19 @@
-let darkMode = false;
-document.getElementById('themeToggle').addEventListener('click', () => {
-  darkMode = !darkMode;
-  document.body.classList.toggle('dark', darkMode);
-});
+const btnToggleMode = document.getElementById('toggle-mode');
+const btnToggleTheme = document.getElementById('toggle-theme');
+const targetMode = document.getElementById('target-mode');
+const simulateMode = document.getElementById('simulate-mode');
+const resultArea = document.getElementById('resultArea');
+let currentMode='target';
 
-let mode1 = document.getElementById('mode1');
-let mode2 = document.getElementById('mode2');
-document.getElementById('modeSwitch').addEventListener('click', () => {
-  const showingMode1 = mode1.style.display !== 'none';
-  mode1.style.display = showingMode1 ? 'none' : 'block';
-  mode2.style.display = showingMode1 ? 'block' : 'none';
-});
+function showMode(mode){currentMode=mode;targetMode.style.display=mode==='target'?'block':'none';simulateMode.style.display=mode==='simulate'?'block':'none';}
+showMode('target');
 
-const ctx = document.getElementById('chart').getContext('2d');
-let chart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      label: '勝率 (%)',
-      data: [],
-      borderColor: '#3a6ff8',
-      tension: 0.2,
-      fill: false
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: { y: { beginAtZero: true, max: 100 } }
-  }
-});
-function updateChart(labels, data) {
-  chart.data.labels = labels;
-  chart.data.datasets[0].data = data;
-  chart.update();
-}
+function applyTheme(theme){if(theme==='dark')document.body.classList.add('dark');else document.body.classList.remove('dark');localStorage.setItem('theme',theme);}
+function initTheme(){const saved=localStorage.getItem('theme');if(saved){applyTheme(saved);}else{const prefers=window.matchMedia('(prefers-color-scheme: dark)').matches;applyTheme(prefers?'dark':'light');}}
+initTheme();
+btnToggleTheme.addEventListener('click',()=>{const dark=document.body.classList.contains('dark');applyTheme(dark?'light':'dark');});
 
-// 模式1：目標勝率
-document.getElementById('calcTarget').addEventListener('click', () => {
-  let total = parseFloat(document.getElementById('totalGames').value);
-  let currentRate = parseFloat(document.getElementById('currentWinRate').value);
-  let targetRate = parseFloat(document.getElementById('targetWinRate').value);
-  if (isNaN(total) || isNaN(currentRate) || isNaN(targetRate)) {
-    document.getElementById('result1').innerText = "請輸入完整數據";
-    return;
-  }
-  let currentWins = total * currentRate / 100;
-  let x = Math.ceil((targetRate * total - 100 * currentWins) / (100 - targetRate));
-  if (x < 0) x = 0;
-  document.getElementById('result1').innerText = `你需要連勝 ${x} 場才能達到 ${targetRate}% 勝率。`;
-  let labels = Array.from({length: x+1}, (_, i) => total + i);
-  let data = labels.map(i => 100*(currentWins + (i - total))/i);
-  updateChart(labels, data);
-});
+btnToggleMode.addEventListener('click',()=>{if(currentMode==='target'){document.getElementById('total2').value=document.getElementById('total').value;document.getElementById('current2').value=document.getElementById('current').value;showMode('simulate');}else{showMode('target');}});
 
-// 模式2：模擬未來對局
-document.getElementById('calcSim').addEventListener('click', () => {
-  let n = parseFloat(document.getElementById('n').value);
-  let a = parseFloat(document.getElementById('a').value);
-  let b = parseFloat(document.getElementById('b').value);
-  let currentRate = parseFloat(document.getElementById('currentRate2').value);
-  let total = parseFloat(document.getElementById('totalGames2').value);
-  if (isNaN(currentRate) || isNaN(total)) {
-    document.getElementById('result2').innerText = "請輸入完整數據";
-    return;
-  }
-  if (!isNaN(n) && !isNaN(a) && isNaN(b)) b = n - a;
-  else if (!isNaN(n) && !isNaN(b) && isNaN(a)) a = n - b;
-  else if (isNaN(n) && !isNaN(a) && !isNaN(b)) n = a + b;
-  if (a < 0 || b < 0 || n < 0) {
-    document.getElementById('result2').innerText = "輸入錯誤";
-    return;
-  }
-  let currentWins = total * currentRate / 100;
-  let newRate = 100 * (currentWins + a) / (total + n);
-  document.getElementById('result2').innerText = `模擬結果：${total+n} 場後的勝率為 ${newRate.toFixed(2)}%`;
-  let labels = Array.from({length: n+1}, (_, i) => total + i);
-  let data = labels.map(i => 100*(currentWins + Math.min(i-total, a))/i);
-  updateChart(labels, data);
-});
+document.getElementById('calc-streak').addEventListener('click',()=>{const total=+document.getElementById('total').value;const cur=+document.getElementById('current').value;const goal=+document.getElementById('goal').value;if(!total||isNaN(cur)||isNaN(goal)){alert('請輸入完整數據');return;}const wins=total*(cur/100);let s=0;let rate=cur;while(rate<goal&&s<100000){s++;rate=((wins+s)/(total+s))*100;}resultArea.textContent=`你需要連勝 ${s} 場才能達到 ${goal}% 勝率。`;});
+document.getElementById('simulate').addEventListener('click',()=>{const n=+document.getElementById('n').value;const win=+document.getElementById('win').value;const lose=+document.getElementById('lose').value;const total=+document.getElementById('total2').value;const cur=+document.getElementById('current2').value;if(isNaN(n)||isNaN(win)||isNaN(lose)||isNaN(total)||isNaN(cur)){alert('請完整輸入模擬欄位');return;}if(win+lose!==n){alert('a+b 必須等於 n');return;}const cw=total*(cur/100);const nt=total+n;const nw=cw+win;const nr=((nw/nt)*100).toFixed(2);resultArea.textContent=`模擬結果：${nt} 場後的勝率為 ${nr}%`;});

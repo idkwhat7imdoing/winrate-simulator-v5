@@ -1,0 +1,129 @@
+#!/bin/bash
+set -e
+
+# === 自動編輯 + 部署腳本 ===
+# 作者: ChatGPT AutoDeploy
+# 功能: 打開 index.html，等待你修改後自動部署到 GitHub Pages
+
+# 專案資料夾
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+FILE_TO_EDIT="$PROJECT_DIR/index.html"
+DEPLOY_SCRIPT="$PROJECT_DIR/deploy.sh"
+
+echo "🧩 準備打開 index.html 供你編輯..."
+sleep 1
+
+# 使用 macOS 內建文字編輯器
+open -e "$FILE_TO_EDIT"
+
+echo ""
+echo "💡 提示："
+echo " 1️⃣ 修改完畢後，請先儲存 (⌘ + S)"
+echo " 2️⃣ 關閉文字編輯器 (⌘ + W)"
+echo " 3️⃣ 然後回到這個 Terminal 視窗，按 Enter 繼續部署"
+echo ""
+read -p "👉 準備好後請按 Enter 繼續..."
+
+echo ""
+echo "🚀 正在部署新版本到 GitHub Pages..."
+sleep 1
+
+# 檢查 deploy.sh 是否存在
+if [ ! -f "$DEPLOY_SCRIPT" ]; then
+  echo "❌ 錯誤：找不到 deploy.sh，請確認它在同一資料夾中。"
+  exit 1
+fi
+
+bash "$DEPLOY_SCRIPT"
+
+echo ""
+echo "✅ 部署完成！"
+echo "🌐 你的網站已更新：https://idkwhat7imdoing.github.io/winrate-simulator-v5/"
+
+#!/bin/bash
+set -e
+
+# === 自動編輯 + 部署腳本 ===
+# 作者: ChatGPT AutoDeploy
+# 功能: 打開 index.html，等待你修改後自動部署到 GitHub Pages
+
+# 專案資料夾
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+FILE_TO_EDIT="$PROJECT_DIR/index.html"
+DEPLOY_SCRIPT="$PROJECT_DIR/deploy.sh"
+
+echo "🧩 準備打開 index.html 供你編輯..."
+sleep 1
+
+# 使用 macOS 內建文字編輯器
+open -e "$FILE_TO_EDIT"
+
+echo ""
+echo "💡 提示："
+echo " 1️⃣ 修改完畢後，請先儲存 (⌘ + S)"
+echo " 2️⃣ 關閉文字編輯器 (⌘ + W)"
+echo " 3️⃣ 然後回到這個 Terminal 視窗，按 Enter 繼續部署"
+echo ""
+read -p "👉 準備好後請按 Enter 繼續..."
+
+echo ""
+echo "🚀 正在部署新版本到 GitHub Pages..."
+sleep 1
+
+# 檢查 deploy.sh 是否存在
+if [ ! -f "$DEPLOY_SCRIPT" ]; then
+  echo "❌ 錯誤：找不到 deploy.sh，請確認它在同一資料夾中。"
+  exit 1
+fi
+
+bash "$DEPLOY_SCRIPT"
+
+echo ""
+echo "✅ 部署完成！"
+echo "🌐 你的網站已更新：https://idkwhat7imdoing.github.io/winrate-simulator-v5/"
+#!/bin/bash
+set -e
+
+# === 自動編輯 + 部署腳本 ===
+# 作者: ChatGPT AutoDeploy
+# 功能: 打開 index.html，等待你修改後自動部署到 GitHub Pages
+
+# 專案資料夾
+PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
+FILE_TO_EDIT="$PROJECT_DIR/index.html"
+DEPLOY_SCRIPT="$PROJECT_DIR/deploy.sh"
+
+echo "🧩 準備打開 index.html 供你編輯..."
+sleep 1
+
+# 使用 macOS 內建文字編輯器
+open -e "$FILE_TO_EDIT"
+
+echo ""
+echo "💡 提示："
+echo " 1️⃣ 修改完畢後，請先儲存 (⌘ + S)"
+echo " 2️⃣ 關閉文字編輯器 (⌘ + W)"
+echo " 3️⃣ 然後回到這個 Terminal 視窗，按 Enter 繼續部署"
+echo ""
+read -p "👉 準備好後請按 Enter 繼續..."
+
+echo ""
+echo "🚀 正在部署新版本到 GitHub Pages..."
+sleep 1
+
+# 檢查 deploy.sh 是否存在
+if [ ! -f "$DEPLOY_SCRIPT" ]; then
+  echo "❌ 錯誤：找不到 deploy.sh，請確認它在同一資料夾中。"
+  exit 1
+fi
+
+bash "$DEPLOY_SCRIPT"
+
+echo ""
+echo "✅ 部署完成！"
+echo "🌐 你的網站已更新：https://idkwhat7imdoing.github.io/winrate-simulator-v5/"
+
+cd ~/Downloads/winrate_simulator_v5
+nano edit.sh
+
+

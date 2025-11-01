@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+<<<<<<< HEAD
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="Content-Style-Type" content="text/css">
   <title></title>
@@ -194,5 +195,80 @@
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b><span class="Apple-converted-space">  </span>&lt;/script&gt;</b></span></h1>
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>&lt;/body&gt;</b></span></h1>
 <h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>&lt;/html&gt;</b></span></h1>
+=======
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>勝率模擬器 v5</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+    <button id="toggle-mode">🔄 切換模式</button>
+    <button id="toggle-theme">🌗 切換主題</button>
+  </header>
+
+  <main style="display:flex;justify-content:center;padding:20px;">
+    <section id="target-mode" style="max-width:720px;width:100%;">
+      <div class="container card">
+        <h1>🏆 勝率模擬器 v5</h1>
+        <h2>🎯 目標勝率模式</h2>
+        <div>
+          <label>總場數：</label>
+          <input id="total" type="number" placeholder="總場數">
+        </div>
+        <div>
+          <label>目前勝率 (%)：</label>
+          <input id="current" type="number" placeholder="%">
+        </div>
+        <div>
+          <label>目標勝率 (%)：</label>
+          <input id="goal" type="number" placeholder="%">
+        </div>
+        <div style="margin-top:12px;">
+          <button id="calc-streak">計算需要連勝場數</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulate-mode" style="display:none;max-width:720px;width:100%;">
+      <div class="container card">
+        <h2>📊 模擬未來對局模式</h2>
+        <div>
+          <label>接下來打幾局 (n)：</label>
+          <input id="n" type="number" placeholder="n">
+        </div>
+        <div>
+          <label>預計贏幾局 (a)：</label>
+          <input id="win" type="number" placeholder="a">
+        </div>
+        <div>
+          <label>預計輸幾局 (b)：</label>
+          <input id="lose" type="number" placeholder="b">
+        </div>
+        <div style="margin-top:8px;">
+          <label>目前勝率 (%)：</label>
+          <input id="current2" type="number" placeholder="%">
+        </div>
+        <div>
+          <label>總場數：</label>
+          <input id="total2" type="number" placeholder="總場數">
+        </div>
+        <div style="margin-top:12px;">
+          <button id="simulate">模擬新勝率</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="display:flex;justify-content:center;">
+    <div class="container card" style="max-width:720px;">
+      <div class="result" id="resultArea" style="min-height:36px;text-align:center;"></div>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:20px;color:var(--text);">© 2025 勝率模擬器 v5</footer>
+
+  <script src="script.js"></script>
+>>>>>>> c641030 (fix index file)
 </body>
 </html>

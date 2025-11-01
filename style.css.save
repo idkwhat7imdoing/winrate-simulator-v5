@@ -1,5 +1,4 @@
 /* ===== 全域設定 ===== */
-<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
@@ -150,75 +149,4 @@ button:hover {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes floatIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ===== 手機版 ===== */
-@media (max-width: 600px) {
-  body {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  .container {
-    padding: 18px;
-    width: 100%;
-  }
-
-  input[type="number"] {
-    width: 65px;
-  }
-
-  button {
-    padding: 8px 16px;
-    font-size: 0.95rem;
-  }
-}
-
-=======
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter","Noto Sans TC",sans-serif;transition:all .25s ease}
-:root{
-  --bg:#ffffff;
-  --text:#222;
-  --card:rgba(255,255,255,.85);
-  --accent:#0072ff;
-  --accent2:#00c6ff;
-  --shadow:rgba(0,0,0,.08);
-}
-.dark{
-  --bg:radial-gradient(circle at top,#0f0f12,#000);
-  --text:#f1f1f1;
-  --card:rgba(255,255,255,0.04);
-  --accent:#00c6ff;
-  --accent2:#0072ff;
-  --shadow:rgba(0,0,0,.6);
-}
-body{background:var(--bg);color:var(--text);min-height:100vh;padding:28px;display:flex;flex-direction:column;align-items:center}
-.container{background:var(--card);border-radius:14px;padding:18px;width:100%;max-width:480px;margin:12px;box-shadow:0 10px 30px var(--shadow)}
-h1{font-size:1.6rem;margin-bottom:10px; background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-input[type="number"]{width:110px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit;margin:6px 6px;text-align:center}
-input[type="number"]:focus{outline:none;box-shadow:0 0 8px rgba(0,198,255,0.12);transform:scale(1.02)}
-button{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:0;padding:10px 16px;border-radius:10px;cursor:pointer;margin:6px}
-button::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(120deg,transparent,rgba(255,255,255,0.28),transparent);transform:rotate(45deg);transition:all .6s ease;opacity:0;z-index:0}
-button:hover::before{left:120%;opacity:1}
-button:hover{transform:translateY(-3px);box-shadow:0 0 18px rgba(0,198,255,0.16)}
-.result{margin-top:12px;font-size:1.05rem;color:var(--accent2);font-weight:600;text-align:center;padding:12px}
-.header-buttons{display:flex;gap:12px;justify-content:center;margin-bottom:18px}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media (max-width:600px){body{padding:16px}.container{padding:12px;max-width:100%}input[type="number"]{width:80px}button{padding:8px 12px;font-size:.95rem}}
->>>>>>> c641030 (fix index file)
+    transfo
