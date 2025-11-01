@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>勝率模擬器 v5</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>勝率模擬器 v5</h1>
+    <div class="mode-toggle">
+      <button id="modeSwitch">🔄 切換模式</button>
+      <button id="themeToggle">🌙 切換主題</button>
+    </div>
+    <div class="card">
+      <div id="mode1">
+        <h2>🎯 目標勝率模式</h2>
+        <label>總場數：</label>
+        <input id="totalGames" type="number" min="0" placeholder="例如 100" />
+        <label>目前勝率 (%)：</label>
+        <input id="currentWinRate" type="number" min="0" max="100" placeholder="例如 55" />
+        <label>目標勝率 (%)：</label>
+        <input id="targetWinRate" type="number" min="0" max="100" placeholder="例如 60" />
+        <button id="calcTarget">計算需要連勝場數</button>
+        <div class="result" id="result1"></div>
+      </div>
+
+      <div id="mode2" style="display:none;">
+        <h2>📊 模擬未來對局模式</h2>
+        <label>接下來打幾局 (n)：</label>
+        <input id="n" type="number" min="0" placeholder="輸入 n" />
+        <label>預計贏幾局 (a)：</label>
+        <input id="a" type="number" min="0" placeholder="輸入 a" />
+        <label>預計輸幾局 (b)：</label>
+        <input id="b" type="number" min="0" placeholder="輸入 b" />
+        <label>目前勝率 (%)：</label>
+        <input id="currentRate2" type="number" min="0" max="100" placeholder="例如 55" />
+        <label>總場數：</label>
+        <input id="totalGames2" type="number" min="0" placeholder="例如 100" />
+        <button id="calcSim">模擬新勝率</button>
+        <div class="result" id="result2"></div>
+      </div>
+    </div>
+
+    <canvas id="chart" height="150"></canvas>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
