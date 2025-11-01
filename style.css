@@ -1,0 +1,191 @@
+/* ===== 全域設定 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Noto Sans TC", sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* ===== 主體樣式（支援亮／暗主題） ===== */
+:root {
+  --bg: #ffffff;
+  --text: #222;
+  --card: rgba(255, 255, 255, 0.7);
+  --accent: #0072ff;
+  --accent2: #00c6ff;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: radial-gradient(circle at top, #1a1a1a, #000);
+    --text: #f1f1f1;
+    --card: rgba(255, 255, 255, 0.05);
+    --accent: #00c6ff;
+    --accent2: #0072ff;
+    --shadow: rgba(0, 0, 0, 0.6);
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  transition: background 0.5s ease;
+}
+
+/* ===== 標題 ===== */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 1s ease;
+}
+
+/* ===== 卡片容器 ===== */
+.container {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px var(--shadow);
+  animation: floatIn 0.6s ease;
+}
+
+/* ===== 輸入框 ===== */
+input[type="number"] {
+  width: 80px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  margin: 4px;
+  text-align: center;
+  background-color: rgba(200, 200, 200, 0.2);
+  color: inherit;
+  font-size: 1rem;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 6px var(--accent);
+  transform: scale(1.05);
+}
+
+/* ===== 按鈕：Neon 流光效果 ===== */
+button {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+button:hover::before {
+  left: 100%;
+  opacity: 1;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--accent2);
+}
+
+/* ===== 結果 ===== */
+.result {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: var(--accent2);
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(0, 198, 255, 0.3);
+  animation: fadeIn 0.6s ease;
+}
+
+/* ===== 按鈕列 ===== */
+.header-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* ===== 動畫 ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== 手機版 ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 18px;
+    width: 100%;
+  }
+
+  input[type="number"] {
+    width: 65px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+}
+
